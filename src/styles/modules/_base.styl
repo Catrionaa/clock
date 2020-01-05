@@ -1,16 +1,52 @@
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
+$clockWidth = 300px
 
-html {
-  box-sizing: border-box;
-  color: $primary-color;
-  font-family: $primary-font;
-  background: #f1f1f1;
-}
+body
+  display grid
+  justify-items center
+  grid-template-columns repeat(3, 1fr)
 
-.center {
-  text-align: center
-}
+  .clock-holder
+    grid-column 2
+
+    .clock
+      width $clockWidth
+      height 300px
+      border 10px solid black
+      border-radius 50%
+      position relative
+
+      ul
+        li
+          list-style-type none
+          width 2px
+          background #000
+          height 20px
+          position absolute
+          left 50%
+          top 50%
+          transform translate(50%, 50%)
+          for num in 1 2 3 4 5 6 7 8 9 10 11 12
+            &:nth-child({num})
+              transform rotateZ(30deg * num)
+
+
+
+          //for num in 1 2 3
+          //  &:nth-child({num})
+          //    left 220px + (num * 20)
+          //
+          //for num in 6 5 4
+          //  &:nth-child({num})
+          //    left 220px + (num * 20)
+          //
+          //for num in 7 8 9
+          //  &:nth-child({num})
+          //    left -20px * num
+          //
+          //for num in 10 11 12
+          //  &:nth-child({num})
+          //    left -30px * num
+          //for num in 1 2 3 4 5 6
+          //  &:nth-child({num})
+          //    top 40px * num
+

@@ -18,7 +18,6 @@ module.exports = {
     path: path.resolve(__dirname, prod_Path),
     filename: "[name].[chunkhash].js"
   },
-  //devtool: 'source-map',
   module: {
     rules: [
       {
@@ -55,8 +54,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: "./" + src_Path + "/index.html",
-      filename: "index.html"
+      template: "./" + src_Path + "/index.pug",
+      filename: "index.pug"
     }),
     new WebpackMd5Hash()
   ]

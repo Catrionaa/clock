@@ -23,10 +23,17 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
+    contentBase: path.join(__dirname, 'dist'),
     open: true,
   },
   module: {
-    rules: [{
+    rules: [
+      {
+        test: /\.pug$/,
+        use: 'pug-loader'
+    },
+
+      {
       test: /\.ts?$/,
       use: 'ts-loader',
       exclude: /node_modules/
@@ -62,10 +69,8 @@ module.exports = {
       filename: 'style.css'
     }),
     new HtmlWebpackPlugin({
-      inject: false,
-      hash: false,
-      template: './' + src_Path + '/index.html',
-      filename: 'index.html'
+      template: './' + src_Path + '/index.pug',
+
     })
   ]
 };
