@@ -1,7 +1,12 @@
 import './styles/style.styl';
 
-console.log('hello, world');
+const bigHand = document.getElementById('big-hand'),
+      smallHand = document.getElementById('small-hand'),
+      hours = new Date().getHours(),
+      minutes = new Date().getMinutes(),
+      percentageMinutes = Math.floor(minutes/60*100),
+      minuteResult = (percentageMinutes/100) * 360,
+      transform =   `rotateZ(${minuteResult}deg)`;
 
-const testMessage: string = 'TypeScript works';
-
-console.log(testMessage);
+smallHand.style.transform = transform;
+smallHand.style.webkitTransform = transform;

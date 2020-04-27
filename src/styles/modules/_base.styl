@@ -4,49 +4,81 @@ body
   display grid
   justify-items center
   grid-template-columns repeat(3, 1fr)
+  background $background
+  min-height calc(100vh - 16px)
 
   .clock-holder
     grid-column 2
+    align-self center
 
     .clock
       width $clockWidth
       height 300px
       border 10px solid black
+      -webkit-box-shadow: inset 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: inset 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: inset 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+      background white
       border-radius 50%
       position relative
 
       ul
+        margin 0
+        padding 0
+        margin-top 5px
+
         li
           list-style-type none
           width 2px
           background #000
-          height 20px
+          height 290px
           position absolute
           left 50%
-          top 50%
-          transform translate(50%, 50%)
+          z-index 1
           for num in 1 2 3 4 5 6 7 8 9 10 11 12
             &:nth-child({num})
               transform rotateZ(30deg * num)
 
+              //&:after
+              //  transform translateX(50%)
 
+          &:after
+            content ''
+            z-index 100
+            background white
+            width 4px
+            position absolute
+            height 265px
+            left -1px
+            top 12px
 
-          //for num in 1 2 3
-          //  &:nth-child({num})
-          //    left 220px + (num * 20)
-          //
-          //for num in 6 5 4
-          //  &:nth-child({num})
-          //    left 220px + (num * 20)
-          //
-          //for num in 7 8 9
-          //  &:nth-child({num})
-          //    left -20px * num
-          //
-          //for num in 10 11 12
-          //  &:nth-child({num})
-          //    left -30px * num
-          //for num in 1 2 3 4 5 6
-          //  &:nth-child({num})
-          //    top 40px * num
+      #big-hand
+        width 5px
+        height 130px
+        background black
+        position absolute
+        left calc(50% - 2.5px)
+        z-index 101
+        top calc(50% - 130px)
+        border-radius 10px
 
+      #small-hand
+        width 3px
+        transform-origin bottom
+        height 80px
+        background black
+        position absolute
+        left calc(50% - 1.5px)
+        z-index 101
+        top calc(50% - 80px)
+        border-radius 10px
+
+      //.center
+      //    width 8px
+      //    height 8px
+      //    background black
+      //    position absolute
+      //    border-radius 50%
+      //    top calc(50% - 4px)
+      //    left calc(50% - 4px)
+      //    z-index 102
