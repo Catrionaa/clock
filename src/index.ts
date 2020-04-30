@@ -1,16 +1,5 @@
 import './styles/style.styl';
 
-// const bigHand = document.getElementById('big-hand'),
-//     smallHand = document.getElementById('small-hand'),
-//     hours = new Date().getHours(),
-//     minutes = new Date().getMinutes(),
-//     percentageMinutes = Math.floor(minutes / 60 * 100),
-//     minuteResult = (percentageMinutes / 100) * 360,
-//     transform = `rotateZ(${minuteResult}deg)`;
-//
-// smallHand.style.transform = transform;
-// smallHand.style.webkitTransform = transform;
-
 
 class Clock {
 
@@ -21,12 +10,9 @@ class Clock {
     bigHand: HTMLElement;
     smallHand: HTMLElement;
     secondHand: HTMLElement;
+    minuteHourRange: number;
 
     constructor() {
-        this.setDate = new Date()
-        this.minutes = this.setDate.getMinutes()
-        this.hours = this.setDate.getHours()
-        this.seconds = this.setDate.getSeconds()
         this.bigHand = document.getElementById('big-hand')
         this.smallHand = document.getElementById('small-hand')
         this.secondHand = document.getElementById('second-hand')
@@ -44,13 +30,21 @@ class Clock {
     }
 
     setHours(){
-        console.log(this.hours)
+
+        const percentageHours = (this.hours % 12) * 30,
+            transform = `rotateZ(${percentageHours + this.minuteHourRange}deg)`;
+
+        this.bigHand.style.transform = transform;
+        this.bigHand.style.webkitTransform = transform;
+
     }
 
     setMinutes(){
         const percentageMinutes = Math.floor(this.minutes / 60 * 100),
             minuteResult = (percentageMinutes / 100) * 360,
             transform = `rotateZ(${minuteResult}deg)`;
+
+       this.minuteHourRange = (percentageMinutes/ 10)* 3;
 
         this.smallHand.style.transform = transform;
         this.smallHand.style.webkitTransform = transform;
@@ -61,7 +55,6 @@ class Clock {
         const percentageSeconds = Math.floor(this.seconds / 60 * 100),
             minuteResult = (percentageSeconds / 100) * 360,
             transform = `rotateZ(${minuteResult}deg)`;
-
 
         this.secondHand.style.transform = transform;
         this.secondHand.style.webkitTransform = transform;

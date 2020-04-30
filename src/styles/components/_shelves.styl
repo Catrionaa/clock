@@ -1,0 +1,19 @@
+.shelves
+  background: brown;
+  width: 50%;
+  height: 10px;
+  align-self: center;
+  position: relative
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.15);
+  margin-bottom -10%
+
+  &::before, &::after
+    content: '';
+    background: #a52a2a;
+    width: 10px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+
+  &::after
+    right 0
